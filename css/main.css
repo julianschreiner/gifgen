@@ -6,6 +6,10 @@ body {
     -webkit-filter: blur(8px) grayscale(50%);
 }
 
+#buttonShare{
+  background-color: #00C853;
+}
+
 .spinner {
   margin: 100px auto;
   width: 40px;

@@ -11,7 +11,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   //$scope.subreddit = 'aww'
 
   //We store every link there
-  $scope.initCoreData = function(){
+  $scope.initCoreData = function() {
     $rootScope.links = [];
     $rootScope.subReddits = [];
     $rootScope.chosenSubreddits = [];
@@ -126,7 +126,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     $scope.loading = false;
 
     //box.js
-    subredditChoice();
+    $scope.subredditChoice();
     $('#mainDiv').addClass('blur');
 
     //Scroll..
@@ -141,13 +141,9 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
 
     if ($rootScope.links.length <= 0) {
       //Getting new Data
-      /* TODO only get data that user really choosed */
-      $scope.getRedditData('trippy');
-      $scope.getRedditData('WTF');
-      $scope.getRedditData('pics');
-      $scope.getRedditData('gif');
-      $scope.getRedditData('BeAmazed');
-      $scope.getRedditData('mildlyinfuriating');
+      angular.forEach($rootScope.chosenSubreddits, function(value, key) {
+        $scope.getRedditData(value);
+      });
     }
 
     //delete old index from array.links
@@ -174,7 +170,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     //$scope.dataIndex++;
   };
 
-  function subredditChoice() {
+  $scope.subredditChoice = function() {
     bootbox.prompt({
       title: "What kind of stuff do you want to see?",
       inputType: 'checkbox',
@@ -222,13 +218,28 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
         $('#mainDiv').removeClass('blur');
       }
     });
+  };
 
+  function copyToClipboard(val) {
+    var dummy = document.createElement("input");
+    document.body.appendChild(dummy);
+    $(dummy).css('display', 'none');
+    dummy.setAttribute("id", "dummy_id");
+    document.getElementById("dummy_id").value = val;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+  }
+
+
+  $scope.shareContent = function()  {
+    //the data we actually want to copy
+    var copyData = $scope.links[$scope.dataIndex];
+    copyToClipboard(copyData);
+    console.log("copied");
   };
 
 
-  $scope.customContent = function() {
-
-  }
 
 
 });
