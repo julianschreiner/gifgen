@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>GifGen</title>
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+<body>
+  <div ng-app="gifGen" ng-controller="gifGenCtrl" id="mainDiv">
+    <br>
+    <div class="spinner" ng-show="loading">
+      <div class="cube1"></div>
+      <div class="cube2"></div>
+    </div>
+
+    <!-- https://placehold.it/900x450&amp;text=Platzhalter -->
+    <div class="row cover-row" ng-show="!loading">
+      <div class="medium-9 small-centered text-center columns" id="mydiv">
+
+        <ul class="breadcrumbs">
+          <li class="unavaiable"><a href="https://www.reddit.com/">Subreddits</a></li>
+          <li ng-repeat="links in subReddits" class="unavailable"><a href="https://www.reddit.com/r/{{ links }}" target="_blank">{{ links }}</a></li>
+        </ul>
+        <p style="text-align: center;"  id="myp">
+          <img id="image" src="{{ links[dataIndex] }}" class="img-responsive">
+        </p>
+        <hr>
+        <br>
+        <br>
+        <p style="text-align: center;">
+          <button id="buttonInfo" class="button round" ng-click="showNextContent();">NEXT</button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootbox.min.js"></script>
+<script src="js/box.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css">
+<link rel="stylesheet" href="css/main.css">
+
+
+</html>
