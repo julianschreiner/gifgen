@@ -14,7 +14,8 @@ TODO: MORE RANDOMNESS; { ✅ }
 TODO *ACTIVE_TASK*: MAKE IMAGE BIGGER ON MOBILE; { ✅ }
 TODO: Make Subreddit List on Top Responsive{ ✅ }
 TODO: NEW BUTTON DESIGN; { ✅ }
+TODO: IF USER WATCHED ALL THE PICS LOAD NEW - POPULAR OR NEXT PAGE; { ✅ }
 ----------------------------------------------------------------------------------------------
 
-TODO: IF USER WATCHED ALL THE PICS LOAD NEW - POPULAR OR NEXT PAGE; { ✅ } 
+
 TODO: MAKE USER ENTER SUBREDDITS; {}
