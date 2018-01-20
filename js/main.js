@@ -13,8 +13,10 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   //We store every link there
   $scope.initCoreData = function() {
     $rootScope.links = [];
+    $rootScope.names = [];
     $rootScope.subReddits = [];
     $rootScope.chosenSubreddits = [];
+
   }
   $scope.initCoreData();
 
@@ -25,8 +27,9 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     //console.log("scrolled");
   };
 
-  $scope.getRedditData = function(subreddit) {
+  $scope.getRedditData = function(subreddit, afterID = '') {
     var sortFactor = '';
+    console.log(afterID);
     /*  var randomNumber = Math.floor((Math.random() * 2) + 1);
 
       if(randomNumber == 1){
@@ -41,7 +44,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
 
     $http({
       method: "GET",
-      url: "https://www.reddit.com/r/" + subreddit + "/" + sortFactor + ".json?sort=" + sortFactor
+      url: "https://www.reddit.com/r/" + subreddit + "/" + sortFactor + ".json?sort=" + sortFactor + "&after=" + afterID
     }).then(function mySuccess(response) {
       $scope.ret = response;
 
@@ -50,6 +53,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
 
       //There we store all our links
       $rootScope.data = $scope.ret.data.data.children;
+      $rootScope.names.push($scope.ret.data.data.after);
 
 
       //Appending .png to all imgur links that are being fetched.
@@ -108,6 +112,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
       console.log(err);
     });
   }
+
   /* TODO OVERWORK THIS */
   $scope.getRedditData('trippy');
   $scope.getRedditData('memes');
@@ -117,9 +122,9 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   $scope.getRedditData('BeAmazed');
   $scope.getRedditData('mildlyinfuriating');
 
+
   //SORT (RANDOM EFFECT)
   $rootScope.links = $filter('orderBy')($rootScope.links, 'key', true)
-
 
   //LET FRONTEND LOAD
   $timeout(function() {
@@ -139,15 +144,26 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     //console.log('triggered');
     //console.log($rootScope.links.length);
 
-    if ($rootScope.links.length <= 0) {
-      //Getting new Data
-      angular.forEach($rootScope.chosenSubreddits, function(value, key) {
-        $scope.getRedditData(value);
-      });
-    }
-
     //delete old index from array.links
     $rootScope.links.splice($scope.dataIndex, 1);
+
+    /*
+    console.log($rootScope.links.length);
+    console.log("---");
+    console.log($rootScope.chosenSubreddits.length);
+    console.log($rootScope.names.length);
+    */
+
+    if ($rootScope.links.length == 0) {
+      //Getting new Data
+      //console.log("Getting new Data");
+      angular.forEach($rootScope.chosenSubreddits, function(value, key) {
+        //Load new content TODO
+        //console.log(key);
+        $scope.getRedditData(value, $scope.names[key]);
+      });
+      $scope.afterIndexTracker();
+    }
 
     //Choose random index in range(0, array.links.size)
     var randIndex = Math.floor((Math.random() * $rootScope.links.length) + 0);
