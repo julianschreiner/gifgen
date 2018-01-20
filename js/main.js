@@ -242,6 +242,7 @@ angular.module('gifGen')
     };
   });
 
+
 function copyToClipboard(text) {
   if (window.clipboardData && window.clipboardData.setData) {
     // IE specific code path to prevent textarea being shown while dialog is visible.

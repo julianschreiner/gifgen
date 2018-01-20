@@ -50,9 +50,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css">
-<script src="js/main.js"></script>
+<!-- <script src="js/main.js"></script> -->
 <script src="js/bootbox.min.js"></script>
-<link rel="stylesheet" href="css/main.css">
+<!-- Essential for Clearing Cache / HASHING -->
+<script src="js/hash.js"></script>
+<script>document.write('<script src="js/main.js?v=' + b64_md5(makeid()) + '"\><\/script>');</script>
+<script>document.write('<link rel="stylesheet" href="css/main.css?v=' + hex_md5(makeid()) + '"\><\/script>');</script>
+<!-- <link rel="stylesheet" href="css/main.css"> -->
+
 
 
 </html>

@@ -105,7 +105,7 @@ ul li {
     /* For mobile phones: */
     #buttonInfo {
         font-size: 14px;
-        margin-top: -6em;
+        margin-top: -2em;
     }
 
     ul {
@@ -125,6 +125,12 @@ ul li {
     #image {
       width: 19em;
       height: 23em;
+    }
+
+    #buttonShare{
+      background-color: #00C853;
+      font-size: 14px;
+      margin-top: -2em;
     }
 
 
