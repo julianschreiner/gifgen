@@ -1,6 +1,6 @@
 <h1>GIFGEN</h1>
 
-<h4>Simple webapp for browsing random images from several subreddits!</h4> <br>
+<h4>Simple webapp for browsing random images from several subreddits!</h4>
 <h4>Try it out: https://www.julianschreiner.de/gifgen/</h4>
 
 <hr>
