@@ -147,12 +147,12 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     //delete old index from array.links
     $rootScope.links.splice($scope.dataIndex, 1);
 
-    /*
+/*
     console.log($rootScope.links.length);
     console.log("---");
     console.log($rootScope.chosenSubreddits.length);
     console.log($rootScope.names.length);
-    */
+*/
 
     if ($rootScope.links.length == 0) {
       //Getting new Data
@@ -160,9 +160,9 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
       angular.forEach($rootScope.chosenSubreddits, function(value, key) {
         //Load new content TODO
         //console.log(key);
-        $scope.getRedditData(value, $scope.names[key]);
+        $scope.getRedditData(value, $rootScope.names[key]);
       });
-      $scope.afterIndexTracker();
+      //$scope.afterIndexTracker();
     }
 
     //Choose random index in range(0, array.links.size)
@@ -218,11 +218,16 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
         {
           text: 'Mildly Infuriating',
           value: 'mildlyinfuriating',
-        }
+        },
       ],
       callback: function(result) {
         //console.log(result);
-        if (result !== null) {
+        var customSubreddit = $('#customSubr').val();
+        $scope.initCoreData();
+        $rootScope.chosenSubreddits.push(customSubreddit);
+        $scope.getRedditData(customSubreddit);
+
+        if (result.length != 0) {
           $scope.initCoreData();
           $rootScope.chosenSubreddits = result;
 
@@ -231,9 +236,19 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
           });
         }
 
+
         $('#mainDiv').removeClass('blur');
       }
     });
+
+    //Custom Subreddits
+    $( ".modal-body" ).append( "<p>Or add your own:</p>");
+    $( ".modal-body" ).append(
+      "<div class='text'>" +
+      "<input class='bootbox-input bootbox-input-text form-control' id='customSubr' type='text' placeholder='Subreddit'>" +
+      "</div>"
+    );
+
   };
 
   $scope.shareContent = function()  {
