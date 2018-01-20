@@ -16,9 +16,15 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     $rootScope.names = [];
     $rootScope.subReddits = [];
     $rootScope.chosenSubreddits = [];
+  };
 
-  }
   $scope.initCoreData();
+
+  $scope.clearNames = function () {
+    $rootScope.names = [];
+    $rootScope.links = [];
+    $rootScope.subReddits = [];
+  };
 
   $scope.goToAnchor = function() {
     $('html, body').animate({
@@ -29,7 +35,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
 
   $scope.getRedditData = function(subreddit, afterID = '') {
     var sortFactor = '';
-    console.log(afterID);
+    //console.log(afterID);
     /*  var randomNumber = Math.floor((Math.random() * 2) + 1);
 
       if(randomNumber == 1){
@@ -50,6 +56,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
 
       //Store requested subReddits
       $rootScope.subReddits.push(subreddit);
+      //console.log($rootScope.subReddits);
 
       //There we store all our links
       $rootScope.data = $scope.ret.data.data.children;
@@ -157,12 +164,13 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     if ($rootScope.links.length == 0) {
       //Getting new Data
       //console.log("Getting new Data");
+      //console.log($rootScope.chosenSubreddits);
       angular.forEach($rootScope.chosenSubreddits, function(value, key) {
         //Load new content TODO
         //console.log(key);
         $scope.getRedditData(value, $rootScope.names[key]);
       });
-      //$scope.afterIndexTracker();
+      $scope.clearNames();
     }
 
     //Choose random index in range(0, array.links.size)
@@ -224,17 +232,23 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
         //console.log(result);
         var customSubreddit = $('#customSubr').val();
         $scope.initCoreData();
-        $rootScope.chosenSubreddits.push(customSubreddit);
-        $scope.getRedditData(customSubreddit);
+
+        if(customSubreddit.length > 0){
+          $rootScope.chosenSubreddits.push(customSubreddit);
+          //$scope.getRedditData(customSubreddit);
+        }
 
         if (result.length != 0) {
-          $scope.initCoreData();
-          $rootScope.chosenSubreddits = result;
-
-          angular.forEach($rootScope.chosenSubreddits, function(value, key) {
-            $scope.getRedditData(value);
+          angular.forEach(result, function(value, key) {
+            $rootScope.chosenSubreddits.push(value);
           });
         }
+
+        angular.forEach($rootScope.chosenSubreddits, function(value, key) {
+            $scope.getRedditData(value);
+        });
+
+        //console.log($rootScope.chosenSubreddits);
 
 
         $('#mainDiv').removeClass('blur');
