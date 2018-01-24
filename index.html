@@ -28,6 +28,9 @@
           <img id="image" src="{{ links[dataIndex] }}" class="img-responsive">
         </p>
         <hr>
+        <p style="text-align: center;" class="font-weight-light" ng-if="links.length > 0">
+            {{ titles[dataIndex] }}
+        </p>
         <p style="text-align: center;" class="font-weight-light" ng-if="links.length > 1">
            {{ links.length }} Pictures left
         </p>

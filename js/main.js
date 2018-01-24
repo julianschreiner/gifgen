@@ -11,6 +11,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   //We store every link there
   $scope.initCoreData = function() {
     $rootScope.links = [];
+    $rootScope.titles = [];
     $rootScope.names = [];
     $rootScope.subReddits = [];
     $rootScope.chosenSubreddits = [];
@@ -21,6 +22,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   $scope.clearNames = function () {
     $rootScope.names = [];
     $rootScope.links = [];
+    $rootScope.titles = [];
     $rootScope.subReddits = [];
   };
 
@@ -85,7 +87,9 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
               !(testify.includes("imgur") && testify.includes("gallery")) &&
               !(testify.includes("reddit") && testify.includes("comments")) &&
               !(testify.includes("imgur") && testify.includes("/a/"))
-            ) {
+              ) 
+            {
+
               $rootScope.links.push(testify);
             }
 
@@ -109,6 +113,9 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
             */
 
             return key = testify;
+          }
+          else if(key == 'title'){
+            $rootScope.titles.push(value);
           }
 
         });
