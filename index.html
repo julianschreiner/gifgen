@@ -9,8 +9,8 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
   <link rel="icon" type="image/png" href="favicon.png" />
 </head>
-<body>
-  <div ng-app="gifGen" ng-controller="gifGenCtrl" id="mainDiv">
+<body ng-app="gifGen" ng-controller="gifGenCtrl">
+  <div id="mainDiv">
     <br>
     <div class="spinner" ng-show="loading">
       <div class="cube1"></div>
@@ -20,7 +20,6 @@
     <!-- https://placehold.it/900x450&amp;text=Platzhalter -->
     <div class="row cover-row" ng-show="!loading">
       <div class="medium-9 small-centered text-center columns" id="mydiv">
-
         <ul class="breadcrumbs">
           <li class="unavaiable"><a href="https://www.reddit.com/">Subreddits</a></li>
           <li ng-repeat="links in subReddits" class="unavailable"><a href="https://www.reddit.com/r/{{ links }}" target="_blank">{{ links }}</a></li>
@@ -29,7 +28,12 @@
           <img id="image" src="{{ links[dataIndex] }}" class="img-responsive">
         </p>
         <hr>
-        <br>
+        <p style="text-align: center;" class="font-weight-light" ng-if="links.length > 1">
+           {{ links.length }} Pictures left
+        </p>
+        <p style="text-align: center;" class="font-weight-light" ng-if="links.length == 1">
+           {{ links.length }} Picture left
+        </p>
         <p style="text-align: center;">
           <button id="buttonInfo" class="button primary" ng-click="showNextContent();">NEXT</button>
           <!-- Target -->
@@ -37,7 +41,7 @@
         </p>
         <footer class="footer">
           <div class="container">
-            <span class="text-muted">v1.3.3</span>
+            <span class="text-muted">v1.5</span>
           </div>
         </footer>
       </div>
@@ -56,6 +60,7 @@
 <script src="js/bootbox.min.js"></script>
 <!-- Essential for Clearing Cache / HASHING -->
 <script>document.write('<script src="js/main.js?v=' + b64_md5(makeid()) + '"\><\/script>');</script>
+
 
 <!-- <link rel="stylesheet" href="css/main.css"> -->
 

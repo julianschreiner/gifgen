@@ -1,7 +1,5 @@
 var app = angular.module('gifGen', []);
 
-
-
 app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filter, $sce, $anchorScroll, $templateCache) {
   //Clearing Cache programatically
   $templateCache.removeAll();
