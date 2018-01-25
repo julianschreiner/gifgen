@@ -3,10 +3,33 @@ var app = angular.module('gifGen', []);
 app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filter, $sce, $anchorScroll, $templateCache) {
   //Clearing Cache programatically
   $templateCache.removeAll();
+  $scope.isMobile = false;
+
+  if(window.innerWidth <= 768){
+    $scope.isMobile = true;
+    console.log("mobile");
+  }
+  else{
+    console.log("desktop");
+  }
 
   $scope.loading = true;
   $scope.dataIndex = 0;
   //$scope.subreddit = 'aww'
+  //TODO build 2 dimensional array:
+  /*
+  * array(){
+    1{
+      link:
+      titles:
+    },
+    2{
+      link:
+      titles:
+    }
+  }
+  *
+  */
 
   //We store every link there
   $scope.initCoreData = function() {
