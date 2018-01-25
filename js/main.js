@@ -264,9 +264,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
         if(customSubreddit.length > 0){
           if(customSubreddit.indexOf(',') != -1){
               customSubreddit = customSubreddit.split(',');
-              console.log(customSubreddit);
               angular.forEach(customSubreddit, function(value, key) {
-                console.log(value);
                 $rootScope.chosenSubreddits.push(value);
               });
           }
