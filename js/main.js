@@ -262,8 +262,18 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
         $scope.initCoreData();
 
         if(customSubreddit.length > 0){
-          $rootScope.chosenSubreddits.push(customSubreddit);
-          //$scope.getRedditData(customSubreddit);
+          if(customSubreddit.indexOf(',') != -1){
+              customSubreddit = customSubreddit.split(',');
+              console.log(customSubreddit);
+              angular.forEach(customSubreddit, function(value, key) {
+                console.log(value);
+                $rootScope.chosenSubreddits.push(value);
+              });
+          }
+          else{
+             $rootScope.chosenSubreddits.push(customSubreddit);
+             //$scope.getRedditData(customSubreddit);
+          }
         }
 
         if (result.length != 0) {
@@ -287,7 +297,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     $( ".modal-body" ).append( "<p>Or add your own:</p>");
     $( ".modal-body" ).append(
       "<div class='text'>" +
-      "<input class='bootbox-input bootbox-input-text form-control' id='customSubr' type='text' placeholder='Subreddit'>" +
+      "<input class='bootbox-input bootbox-input-text form-control' id='customSubr' type='text' placeholder='Subreddit (comma separated)'>" +
       "</div>"
     );
 
@@ -296,7 +306,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   $scope.shareContent = function()  {
     copyToClipboard($scope.links[$scope.dataIndex]);
     var dialog = bootbox.dialog({
-      message: '<p class="text-center">Copied URL ✅  Share it with your friends.</p>',
+      message: '<p class="text-center">Copied URL ✅ Share it with your friends.</p>',
       closeButton: false
     });
 
