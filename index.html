@@ -21,7 +21,7 @@
     <div class="row cover-row" ng-show="!loading">
       <div class="medium-9 small-centered text-center columns" id="mydiv">
         <ul class="breadcrumbs">
-          <li class="unavaiable"><a href="https://www.reddit.com/">Subreddits</a></li>
+          <li class="unavaiable"><a href="#" ng-click=" initCoreData(); subredditChoice();">NEW</a></li>
           <li ng-repeat="links in subReddits" class="unavailable"><a href="https://www.reddit.com/r/{{ links }}" target="_blank">{{ links }}</a></li>
         </ul>
         <p style="text-align: center;"  id="myp">
