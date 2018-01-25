@@ -25,10 +25,12 @@
           <li ng-repeat="links in subReddits" class="unavailable"><a href="https://www.reddit.com/r/{{ links }}" target="_blank">{{ links }}</a></li>
         </ul>
         <p style="text-align: center;"  id="myp">
+        <a ng-if="isMobile" ng-click="showNextContent();">
           <img id="image" src="{{ links[dataIndex] }}" class="img-responsive">
+        </a>
         </p>
         <hr>
-        <p style="text-align: center;" class="font-weight-light" ng-if="links.length > 0">
+        <p style="text-align: center; " class="font-weight-light" ng-if="links.length > 0">
             {{ titles[dataIndex] }}
         </p>
         <p style="text-align: center;" class="font-weight-light" ng-if="links.length > 1">
@@ -37,11 +39,11 @@
         <p style="text-align: center;" class="font-weight-light" ng-if="links.length == 1">
            {{ links.length }} Picture left
         </p>
-        <br ng-if="isMobile">
+        <br ng-if="!isMobile">
         <p style="text-align: center;">
-          <button id="buttonInfo" class="button primary" ng-click="showNextContent();">NEXT</button>
+          <button ng-if="!isMobile" id="buttonInfo" class="button primary" ng-click="showNextContent();">NEXT</button>
           <!-- Target -->
-          <button id="buttonShare" class="button primary" ng-click="shareContent();">SHARE</button>
+          <button ng-if="!isMobile" id="buttonShare" class="button primary" ng-click="shareContent();">SHARE</button>
         </p>
         <footer class="footer">
           <div class="container">
