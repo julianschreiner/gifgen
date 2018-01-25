@@ -28,6 +28,9 @@
         <a ng-if="isMobile" ng-click="showNextContent();">
           <img id="image" src="{{ links[dataIndex] }}" class="img-responsive">
         </a>
+        <asd ng-if="!isMobile">
+          <img id="image" src="{{ links[dataIndex] }}" class="img-responsive">
+        </asd>
         </p>
         <hr>
         <p style="text-align: center; " class="font-weight-light" ng-if="links.length > 0">

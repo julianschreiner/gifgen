@@ -5,7 +5,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
   $templateCache.removeAll();
   $scope.isMobile = false;
 
-  if(window.innerWidth <= 768){
+  if(window.innerWidth < 769){
     $scope.isMobile = true;
     console.log("mobile");
   }
