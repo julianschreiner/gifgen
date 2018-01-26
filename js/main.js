@@ -209,8 +209,10 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
 
     //WAIT until GIF is loaded
     if ($rootScope.links[$scope.dataIndex].includes(".gif")) {
+      $('#image').attr('src', 'ss');
       $scope.loading = true;
       $timeout(function() {
+        $('#image').attr('src', $scope.links[$scope.dataIndex]);
         $scope.loading = false;
 
 
@@ -219,12 +221,15 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
       }, 1500);
     }
 
+
     //$scope.dataIndex++;
   };
 
   $scope.subredditChoice = function() {
     bootbox.prompt({
       title: "What kind of stuff do you want to see?",
+      closeButton: false,
+      cancelButton: false,
       inputType: 'checkbox',
       closeButton: false,
       inputOptions: [{
@@ -274,10 +279,14 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
           }
         }
 
-        if (result.length != 0) {
+        if (result.length != null) {
           angular.forEach(result, function(value, key) {
             $rootScope.chosenSubreddits.push(value);
           });
+        }
+       /* STOPPED HERE ----> */
+        if(result === null){
+          $( ".modal-body" ).append( "<p>Please choose a subreddit!</p>");
         }
 
         angular.forEach($rootScope.chosenSubreddits, function(value, key) {
@@ -292,6 +301,7 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
     });
 
     //Custom Subreddits
+    $( ".btn btn-default" ).css('display: none;');
     $( ".modal-body" ).append( "<p>Or add your own:</p>");
     $( ".modal-body" ).append(
       "<div class='text'>" +

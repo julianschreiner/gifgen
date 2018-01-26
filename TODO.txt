@@ -1,25 +1,28 @@
-TODO: Store in array;  {✅ }
-TODO: Build 'Gallery' with with HTML (draw rect); { ✅ }
-TODO: Only show new pic when button clicked then show different pic/gif;  { ✅ }
-TODO: IF IMAGE == IMGUR -> APPEND ".png" at the end of url; { ✅  }
-TODO: DO NOT SHOW VIDEOS -> FILTER ANY ENDING WITH .mpg4 OR WHATEVER; { ✅ }
-TODO: Use different SUBREDDITS; { ✅ }
-TODO: make button -> if button clicked next RANDOM image or gif;  { ✅ }
-TODO: use not newest post -> use hot or popular; { ✅  }
-TODO: WORK ON PERFOMANCE WHEN NEXT PIC IS GIF (SHOW LOADING CIRLCE); { ✅  }
-TODO: MAKE IMAGES ALWAYS SAME HEIGHT AND WIDTH SO BUTTON DOES NOT JUMP; { ✅  }
-TODO: RANDOM CHOOSE sort=top or sort = new; { ✅  }
-TODO: IF $scope.dataIndex > data.size -> get new data (per function) and build new Array; {  ✅  }
-TODO: MORE RANDOMNESS; { ✅ }
-TODO *ACTIVE_TASK*: MAKE IMAGE BIGGER ON MOBILE; { ✅ }
-TODO: Make Subreddit List on Top Responsive{ ✅ }
-TODO: NEW BUTTON DESIGN; { ✅ }
-TODO: IF USER WATCHED ALL THE PICS LOAD NEW - POPULAR OR NEXT PAGE; { ✅ }
-TODO: FIX BUG WHEN ENTERING SUBREDDIT AND CHOOSING ONE -> LOADING NEW CONTENT IS WRONG; { ✅ }
-TODO: MAKE USER ENTER SUBREDDITS; { ✅ }
-TODO: CHANGE SUBREDDITS BUTTON; { ✅ }
+DONE:
+	TODO: Store in array;  {✅ }
+	TODO: Build 'Gallery' with with HTML (draw rect); { ✅ }
+	TODO: Only show new pic when button clicked then show different pic/gif;  { ✅ }
+	TODO: IF IMAGE == IMGUR -> APPEND ".png" at the end of url; { ✅  }
+	TODO: DO NOT SHOW VIDEOS -> FILTER ANY ENDING WITH .mpg4 OR WHATEVER; { ✅ }
+	TODO: Use different SUBREDDITS; { ✅ }
+	TODO: make button -> if button clicked next RANDOM image or gif;  { ✅ }
+	TODO: use not newest post -> use hot or popular; { ✅  }	
+	TODO: WORK ON PERFOMANCE WHEN NEXT PIC IS GIF (SHOW LOADING CIRLCE); { ✅  }
+	TODO: MAKE IMAGES ALWAYS SAME HEIGHT AND WIDTH SO BUTTON DOES NOT JUMP; { ✅  }
+	TODO: RANDOM CHOOSE sort=top or sort = new; { ✅  }
+	TODO: IF $scope.dataIndex > data.size -> get new data (per function) and build new Array; {  ✅  }
+	TODO: MORE RANDOMNESS; { ✅ }
+	TODO *ACTIVE_TASK*: MAKE IMAGE BIGGER ON MOBILE; { ✅ }
+	TODO: Make Subreddit List on Top Responsive{ ✅ }
+	TODO: NEW BUTTON DESIGN; { ✅ }
+	TODO: IF USER WATCHED ALL THE PICS LOAD NEW - POPULAR OR NEXT PAGE; { ✅ }
+	TODO: FIX BUG WHEN ENTERING SUBREDDIT AND CHOOSING ONE -> LOADING NEW CONTENT IS WRONG; { ✅ }
+	TODO: MAKE USER ENTER SUBREDDITS; { ✅ }
+	TODO: CHANGE SUBREDDITS BUTTON; { ✅ }
+	TODO: MAKE USER ENTER MORE CUSTOM SUBREDDITS WITH COMMA SEPERATED; { ✅ }
+	TODO: FALLABCK WHEN NOTHING IS SELECTED; { ✅ }
 ----------------------------------------------------------------------------------------------
-TODO: MAKE USER ENTER MORE CUSTOM SUBREDDITS WITH COMMA SEPERATED; {}
+TODO: IMPROVING PERFOMANCE WITH GIFS; {}
+TODO: REMOVE CANCEL BUTTON; {}
 TODO: SHOW MOST POPULAR SUBREDDITS SOMEWHERE; {}
-TODO: IMPROVING PERFOMANCE; {}
 TODO: EVENTUALLY IMAGE LOADING / SLIDING ANIMATIONS; {}
