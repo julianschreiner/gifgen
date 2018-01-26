@@ -193,12 +193,19 @@ app.controller('gifGenCtrl', function($scope, $http, $timeout, $rootScope, $filt
       //Getting new Data
       //console.log("Getting new Data");
       //console.log($rootScope.chosenSubreddits);
+      
+      $scope.loading = true;
       angular.forEach($rootScope.chosenSubreddits, function(value, key) {
         //Load new content TODO
         //console.log(key);
+
         $scope.getRedditData(value, $rootScope.names[key]);
       });
       $scope.clearNames();
+      
+      $timeout(function(){
+        $scope.loading = false;
+      }, 1000);
     }
 
     //Choose random index in range(0, array.links.size)
